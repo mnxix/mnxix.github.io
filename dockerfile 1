@@ -1,0 +1,6 @@
+$ docker run -it \
+-e POSTGRES_USER="root" \
+-e POSTGRES_PASSWORD="root" \
+-e POSTGRES_DB="dwh" \
+-p 5432:2345 \
+postgres:13
