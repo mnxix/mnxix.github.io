@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create product list with CSS3</title>
+<style type="text/css">
+
+/* Ẩn chi tiết sản phẩm ban đầu */
+.ProductDetails {
+  display: none;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Ảnh sản phẩm */
+.Product img {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  box-shadow: 50px 50px 50px #aaa;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng phóng to khi hover */
+.Product:hover img {
+  transform: scale(1.05);
+}
+
+/* Tên sản phẩm */
+.ProductName {
+  display: block;
+  font-weight: bold;
+}
+
+/* Giá sản phẩm */
+.ProductPrice {
+  display: block;
+  font-style: italic;
+}
+
+/* Container từng sản phẩm */
+.Product {
+  text-align: center;
+  width: 150px;
+  margin: 0px 20px;
+  float: left;
+  cursor: pointer;
+}
+
+/* Khi hover vào .Product thì hiển thị chi tiết */
+.Product:hover .ProductDetails {
+  display: block;
+}
+
+</style>
+</head>
+<body>
+
+<div>
+  <div class="Product">
+    <img src="rose.jpg" alt="Rose">
+    <div class="ProductDetails">
+      <span class="ProductName">Rose</span>
+      <span class="ProductPrice">1.5$</span>
+    </div>
+  </div>
+
+  <div class="Product">
+    <img src="tulip.jpg" alt="Tulip">
+    <div class="ProductDetails">
+      <span class="ProductName">Tulip</span>
+      <span class="ProductPrice">2.0$</span>
+    </div>
+  </div>
+
+  <div class="Product">
+    <img src="daisy.jpg" alt="Daisy">
+    <div class="ProductDetails">
+      <span class="ProductName">Daisy</span>
+      <span class="ProductPrice">1.0$</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
