@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Bài 2 — Sử dụng document.write</title>
+</head>
+<body>
+  <h2>Bài 2 — document.write demo</h2>
+
+  <label for="name">Tên:</label>
+  <input id="name" type="text" /><br/><br/>
+
+  <label for="age">Tuổi:</label>
+  <input id="age" type="text" /><br/><br/>
+
+  <button id="showBtn">Hiển thị bằng document.write()</button>
+  <button id="showSafeBtn">Hiển thị bằng innerHTML (khuyến nghị)</button>
+
+  <div id="output" style="margin-top:16px;"></div>
+
+  <script>
+    document.getElementById('showBtn').addEventListener('click', function () {
+      const name = document.getElementById('name').value.trim();
+      const age = document.getElementById('age').value.trim();
+
+      // Cảnh báo: document.write sẽ ghi đè toàn bộ trang nếu gọi sau khi load.
+      // Mục đích ở đây là minh hoạ hành vi.
+      document.write('<h3>Thông tin (hiển thị bằng document.write)</h3>');
+      document.write('<p>Tên: ' + (name || '[không nhập]') + '</p>');
+      document.write('<p>Tuổi: ' + (age || '[không nhập]') + '</p>');
+    });
+
+    document.getElementById('showSafeBtn').addEventListener('click', function () {
+      const name = document.getElementById('name').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const out = document.getElementById('output');
+      out.innerHTML = '<h3>Thông tin (innerHTML - khuyến nghị)</h3>'
+        + '<p>Tên: ' + (name || '[không nhập]') + '</p>'
+        + '<p>Tuổi: ' + (age || '[không nhập]') + '</p>';
+    });
+  </script>
+</body>
+</html>

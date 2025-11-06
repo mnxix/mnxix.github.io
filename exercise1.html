@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Bài 1 — Nhập 2 số và tính tổng</title>
+</head>
+<body>
+  <h2>Bài 1 — Nhập 2 số và tính tổng</h2>
+
+  <label for="num1">Số thứ nhất:</label>
+  <input id="num1" type="text" /><br/><br/>
+
+  <label for="num2">Số thứ hai:</label>
+  <input id="num2" type="text" /><br/><br/>
+
+  <button id="calcBtn">Tính tổng</button>
+
+  <p id="result"></p>
+
+  <script>
+    function isValidNumber(str) {
+      if (str === null) return false;
+      // loại khoảng trắng dư
+      str = str.trim();
+      if (str.length === 0) return false;
+      const n = parseFloat(str);
+      return Number.isFinite(n);
+    }
+
+    document.getElementById('calcBtn').addEventListener('click', function () {
+      const s1 = document.getElementById('num1').value;
+      const s2 = document.getElementById('num2').value;
+
+      if (!isValidNumber(s1)) {
+        alert('Lỗi: Giá trị nhập ở "Số thứ nhất" không phải là một số hợp lệ.');
+        document.getElementById('num1').focus();
+        return;
+      }
+      if (!isValidNumber(s2)) {
+        alert('Lỗi: Giá trị nhập ở "Số thứ hai" không phải là một số hợp lệ.');
+        document.getElementById('num2').focus();
+        return;
+      }
+
+      const n1 = parseFloat(s1);
+      const n2 = parseFloat(s2);
+      const sum = n1 + n2;
+
+      // Hiện hộp thoại và hiển thị trên trang
+      alert('Tổng = ' + sum);
+      document.getElementById('result').innerText = 'Kết quả: ' + n1 + ' + ' + n2 + ' = ' + sum;
+    });
+  </script>
+</body>
+</html>

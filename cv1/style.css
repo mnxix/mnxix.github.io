@@ -1,0 +1,219 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 30px 0;
+}
+
+/* ===== Navigation Bar ===== */
+#topmenu {
+  background-color: #004080;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#topmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#topmenu ul li {
+  margin: 0;
+}
+
+#topmenu ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* pseudo-class hover */
+#topmenu ul li a:hover {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+/* ===== About Section ===== */
+#about {
+  text-align: center;
+  padding-top: 40px;
+}
+
+#about h1 {
+  font-size: 2.2em;
+}
+
+#about h3 {
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+/* ===== Education, Experience, Skills ===== */
+section {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 25px;
+}
+
+/* ===== Skills list formatting ===== */
+#skills ul {
+  columns: 2;
+  list-style-type: "✔ ";
+}
+
+/* ===== Contact Section ===== */
+#contact a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ===== Contact form styles (nested selectors + pseudo-classes) ===== */
+.container .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.contact-details p {
+  margin: 6px 0;
+  color: #333;
+}
+
+/* FORM */
+.contact-form {
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* nested selector: all inputs inside contact-form */
+.contact-form label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+/* pseudo-class: focus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 0 4px rgba(0,119,204,0.08);
+  outline: none;
+}
+
+/* row containing buttons */
+.contact-form .form-row {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+/* buttons */
+.btn {
+  background: #0077cc;
+  color: #fff;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: #f2f2f2;
+  color: #333;
+}
+
+/* pseudo-class: hover for buttons */
+.btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* nested: fine-tune small screens */
+@media (max-width: 800px) {
+  .container .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #topmenu ul {
+    flex-wrap: wrap;
+  }
+
+  #topmenu ul li a {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* small helper note */
+.contact-form .form-note {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #666;
+}

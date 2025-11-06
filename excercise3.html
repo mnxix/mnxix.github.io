@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Bài 3 — Số ngày trong tháng (switch) - Sửa lỗi</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 16px; }
+    label { display:inline-block; width:120px; }
+    input { width:120px; }
+    .error { color: #b00; margin-top:8px; }
+    .ok { color: #080; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <h2>Bài 3 — Số ngày trong tháng (dùng switch) - Sửa lỗi</h2>
+
+  <div>
+    <label for="month">Tháng (1-12):</label>
+    <input id="month" type="text" placeholder="ví dụ: 2" /><br/><br/>
+
+    <label for="year">Năm (ví dụ 2025):</label>
+    <input id="year" type="text" placeholder="ví dụ: 2025" /><br/><br/>
+
+    <button id="btn">Xác định số ngày</button>
+  </div>
+
+  <p id="output"></p>
+  <p id="note" class="error" style="display:none"></p>
+
+  <script>
+    // Kiểm tra năm nhuận — đầu vào đã là số nguyên dương
+    function isLeapYear(year) {
+      // year assumed integer > 0
+      return (year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0);
+    }
+
+    document.getElementById('btn').addEventListener('click', function () {
+      const rawMonth = document.getElementById('month').value.trim();
+      const rawYear  = document.getElementById('year').value.trim();
+      const noteEl = document.getElementById('note');
+      const outEl  = document.getElementById('output');
+
+      noteEl.style.display = 'none';
+      outEl.textContent = '';
+
+      // Kiểm tra rỗng
+      if (rawMonth.length === 0) {
+        noteEl.textContent = 'Lỗi: Bạn chưa nhập tháng (1-12).';
+        noteEl.style.display = 'block';
+        document.getElementById('month').focus();
+        return;
+      }
+      if (rawYear.length === 0) {
+        noteEl.textContent = 'Lỗi: Bạn chưa nhập năm.';
+        noteEl.style.display = 'block';
+        document.getElementById('year').focus();
+        return;
+      }
+
+      // Kiểm tra chỉ chứa chữ số (có thể nhận dạng số âm/ dấu + nếu muốn - ở đây không chấp nhận)
+      if (!/^\d+$/.test(rawMonth)) {
+        noteEl.textContent = 'Lỗi: Tháng phải là số nguyên không âm (ví dụ: 1..12).';
+        noteEl.style.display = 'block';
+        document.getElementById('month').focus();
+        return;
+      }
+      if (!/^\d+$/.test(rawYear)) {
+        noteEl.textContent = 'Lỗi: Năm phải là số nguyên dương (ví dụ: 2025).';
+        noteEl.style.display = 'block';
+        document.getElementById('year').focus();
+        return;
+      }
+
+      // parseInt với radix 10 để an toàn
+      const month = parseInt(rawMonth, 10);
+      const year  = parseInt(rawYear, 10);
+
+      // Kiểm tra phạm vi
+      if (isNaN(month) || month < 1 || month > 12) {
+        noteEl.textContent = 'Lỗi: Tháng phải nằm trong khoảng 1 đến 12.';
+        noteEl.style.display = 'block';
+        document.getElementById('month').focus();
+        return;
+      }
+      if (isNaN(year) || year <= 0) {
+        noteEl.textContent = 'Lỗi: Năm phải là số nguyên dương (> 0).';
+        noteEl.style.display = 'block';
+        document.getElementById('year').focus();
+        return;
+      }
+
+      // Tính số ngày dùng switch
+      let days;
+      switch (month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+          days = 31;
+          break;
+        case 4: case 6: case 9: case 11:
+          days = 30;
+          break;
+        case 2:
+          days = isLeapYear(year) ? 29 : 28;
+          break;
+        default:
+          days = null;
+      }
+
+      if (days === null) {
+        noteEl.textContent = 'Lỗi nội bộ: không xác định được số ngày.';
+        noteEl.style.display = 'block';
+        return;
+      }
+
+      outEl.textContent = 'Kết quả: Tháng ' + month + ' năm ' + year + ' có ' + days + ' ngày.';
+      outEl.className = 'ok';
+      // nếu cần debug bật console log
+      console.log('month=', month, 'year=', year, 'days=', days);
+    });
+  </script>
+</body>
+</html>
